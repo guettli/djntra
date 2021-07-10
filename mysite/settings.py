@@ -13,12 +13,13 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-PROD_URL = 'https://demo.orderkit.de/'
+FQDN = 'www.djantra.com'
+PROD_URL = f'https://{FQDN}/'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = strtobool(os.getenv('DEBUG'))
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split()
+ALLOWED_HOSTS = [FQDN]
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 assert SECRET_KEY
