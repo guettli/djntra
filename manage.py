@@ -3,6 +3,9 @@
 import os
 import sys
 
+import djntra
+
+#assert 0, djntra.__file__
 
 def main():
     """Run administrative tasks."""

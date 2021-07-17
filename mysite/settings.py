@@ -19,7 +19,8 @@ PROD_URL = f'https://{FQDN}/'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = strtobool(os.getenv('DEBUG'))
 
-ALLOWED_HOSTS = [FQDN]
+if not DEBUG:
+    ALLOWED_HOSTS = [FQDN]
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 assert SECRET_KEY
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'health_check.storage',
     'health_check.contrib.migrations',
     'health_check.contrib.psutil',
+    'django_tiptap',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
@@ -53,10 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'orderkit.middleware.anonymous_is_user_with_id_one.AnonymousIsOneMiddleware',
-    'django_middleware_global_request.middleware.GlobalRequestMiddleware',
-    'django_check_html_middleware.CheckHTMLMiddleware',
-       ]
+    ]
 
 
 

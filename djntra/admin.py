@@ -1,3 +1,8 @@
 from django.contrib import admin
+from djntra.models import Thing
 
-# Register your models here.
+
+class ThingAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Thing, ThingAdmin)

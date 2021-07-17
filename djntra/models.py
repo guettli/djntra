@@ -1,12 +1,13 @@
 import uuid
 
 from django.db import models
+from django_tiptap.fields import TipTapTextField
 
 
 class Thing(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=1024, blank=True, default='')
-    html = models.TextField(blank=True)
+    html = TipTapTextField(blank=True)
     is_relation = models.BooleanField(default=False)
 
 class RelationType(models.Model):
